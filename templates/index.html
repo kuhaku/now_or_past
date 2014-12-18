@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>@qwerty now or past</title>
+    <link rel="stylesheet" href="{{ css }}" type="text/css">
+    <script type="text/javascript">
+      function switch_element_display(id){
+        if(document.getElementById(id).style.display == 'none'){
+          document.getElementById(id).style.display = 'inline';
+        }
+        else{
+          document.getElementById(id).style.display = 'none';
+        }
+      }
+    {% if sound %}
+      window.onload = function(){
+        document.getElementById("{{ sound }}").play();
+      }
+    {% endif %}
+    </script>
+  </head>
+  <body>
+    <h1>@qwerty Now or Past?</h1>
+    <hr>
+    {% if answer %}
+    <h2>{{ answer }}</h2>
+    <p>{{ post_dt }}</p>
+    <pre>{{ post }}</pre>
+    <form method="post">
+      <button type="submit" value="next" accesskey="3">NEXT</button>
+    </form>
+    {% else %}
+    <pre>{{ post }}</pre>
+    <form method="post">
+       <input type="hidden" name="_id" value={{ _id }}>
+       <button id="now" type="submit" name="res" value="now" accesskey="1">Now</button>
+       <button type="submit" id="past" name="res" value="past" accesskey="2">Past</button>
+    </form>
+    {% endif %}
+    <hr>
+    <p><a href="javascript:;" onmousedown="switch_element_display('description');">なにこれ？</a></p>
+<pre id="description" style="display:none"> 最近の投稿(Now)か / 昔の投稿(Past)かを当てるゲームです。
+ そろそろqwerty10周年ってことで、今と昔で変わったこと/変わってないことを感じたり懐かしんでみたりすることを目的に作りました。</pre>
+    <p><a href="https://twitter.com/share" class="twitter-share-button" data-text="qwerty now or past?" data-lang="ja" data-count="none">ツイート</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
+  <audio id="right" preload="auto">
+    <source src="{{ url_for('static', filename='right.mp3') }}" type="audio/mp3">
+  </audio>
+  <audio id="wrong" preload="auto">
+    <source src="{{ url_for('static', filename='wrong.mp3') }}" type="audio/mp3">
+  </audio>
+ </body>
+</html>
