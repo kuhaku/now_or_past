@@ -13,6 +13,7 @@ QWERTY_START_YEAR = 2005
 ALMOST_ONE_YEAR = 60 * 60 * 24 * 365 - 3600
 KUZUHA_DT_FORMAT = '投稿日：<em>%s</em>/%02d/%02d(%s)%02d時%02d分%02d秒'
 WEEKDAYS = '月火水木金土日'
+USAMIN_URL = 'http://usamin.mine.nu/cgi/swlog?id=%d&b=qwerty'
 CORRECT_MSGS = ('あたりヽ(´ー｀)ノ', 'すごーい(´Д`)',
                 '(´ー｀)v', 'ヽ(´ー｀)ノ')
 INCORRECT_MSGS = ('(^Д^)', 'はずれ(^Д^)', 'poox(^Д^)', "(*'ｰ')ﾊﾞｶﾐﾀｲ",
@@ -80,6 +81,11 @@ def parse_dt(dt):
     return dt_str
 
 
+def gen_usamin_link(_id):
+    url = USAMIN_URL % _id
+    return ' <a href="%s">◇</a>' % url
+
+
 def is_correct(t_delta, _input):
     if t_delta.total_seconds() > ALMOST_ONE_YEAR:
         return _input == 'past'
@@ -106,7 +112,8 @@ def now_or_past():
             answer = '[おちんぽ] ' + random.choice(INCORRECT_MSGS)
             sound = 'wrong'
             db.set('win:%s' % identifier, 0)
-        return render_template('index.html', post_dt=Markup(parse_dt(post_dt)), css=css,
+        post_dt = Markup(parse_dt(post_dt) + gen_usamin_link(_id))
+        return render_template('index.html', post_dt=post_dt, css=css,
                                post=Markup(post), answer=Markup(answer), sound=sound)
     else:
         log = get_log()
