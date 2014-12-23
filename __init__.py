@@ -91,8 +91,8 @@ def check_answer(identifier, form, ua):
     t_delta = datetime.now() - post_dt
     db = redis.StrictRedis(**REDIS_SETTING)
     if is_correct(t_delta, form['res']):
-        prev = db.get('prev:%s' % identifier) or ''
-        if _id != prev:
+        prev = db.get('prev:%s' % identifier) or 0
+        if _id != int(prev):
             score = db.incr('win:%s' % identifier)
             answer = '[%d おまんこ] ' % score + random.choice(CORRECT_MSGS)
             sound = 'right'
