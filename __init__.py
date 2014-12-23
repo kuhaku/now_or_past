@@ -97,6 +97,8 @@ def check_answer(identifier, form, ua):
             answer = '[%d おまんこ] ' % score + random.choice(CORRECT_MSGS)
             sound = 'right'
             db.expire('win:%s' % identifier, 300)
+            db.set('prev:%s' % identifier, _id)
+            db.expire('prev:%s' % identifier, 300)
         else:
             answer = 'リロードしたので正解数をリセットします(ﾟД`)'
             sound = 'wrong'
