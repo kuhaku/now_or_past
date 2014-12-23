@@ -2,3 +2,4 @@ flask
 elasticsearch
 redis
 git+https://github.com/woothee/woothee-python
+uwsgi

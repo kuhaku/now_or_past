@@ -2,7 +2,7 @@
 h1 {
   font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HiraKaku Pro-W3",Arial,Helvetica,sans-serif;
 }
-h2 {
+p.info {
   color: red;
   font-size: 450%;
   font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HiraKaku Pro-W3",Arial,Helvetica,sans-serif;
@@ -42,3 +42,11 @@ em {
 a:link {color : #eeffee;}
 a:visited {color: #dddddd;}
 a:hover {color: #ff0000;}
+table {
+  margin: 1%;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+td, th {
+  text-align: right;
+}

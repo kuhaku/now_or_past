@@ -2,7 +2,7 @@
 h1 {
   font-family: "メイリオ",Meiryo,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HiraKaku Pro-W3",Arial,Helvetica,sans-serif;
 }
-h2 {
+p.info {
   color: red;
   font-size: 200%;
   font-weight: bolder;
@@ -38,6 +38,9 @@ button#now {
 button#past {
   color: #33aaff;
 }
+button#highscore {
+  font-size: 70%;
+}
 p {
   font-size: 130%;
 }
@@ -52,3 +55,12 @@ em {
 a:link {color : #eeffee;}
 a:visited {color: #dddddd;}
 a:hover {color: #ff0000;}
+table {
+  margin: 2%;
+  width: 60%;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+td, th {
+  text-align: right;
+}

@@ -19,7 +19,13 @@
     <h1>@qwerty Now or Past?</h1>
     <hr>
     {% if answer %}
-    <h2>{{ answer }}</h2>
+    <p class="info">{{ answer }}</p>
+      {% if highscore %}
+      <p class="info">Highscoreヽ(´ー｀)ノ {{ highscore }} おまんこ</p>
+      <form method="post"> 
+          名前:<INPUT size="20" type="text" name="name" maxlength="30" value=""> 
+          <button id="highscore" type="submit" value="next" accesskey="4">今すぐ登録する</button></form>
+      {% endif %}
     <p>{{ post_dt }}</p>
     <pre>{{ post }}</pre>
     <form method="post">
@@ -37,6 +43,7 @@
     <p><a href="javascript:;" onmousedown="switch_element_display('description');">なにこれ？</a></p>
 <pre id="description" style="display:none"> 最近の投稿(Now)か / 昔の投稿(Past)かを当てるゲームです。
  そろそろqwerty10周年ってことで、今と昔で変わったこと/変わってないことを感じたり懐かしんでみたりすることを目的に作りました。</pre>
+    <p><a href="ranking">ハイスコアヽ(´ー｀)ノ</a></p>
     <p><a href="https://github.com/kuhaku/now_or_past">ソース</a></p>
     <p><a href="https://twitter.com/share" class="twitter-share-button" data-text="qwerty now or past?" data-lang="ja" data-count="none">ツイート</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
   {% if sound %}
